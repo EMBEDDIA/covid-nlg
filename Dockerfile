@@ -1,25 +1,17 @@
 FROM python:3.6
 
-ENV omorfi 20161115
-ENV PYTHONPATH /usr/lib/python3/dist-packages
+RUN echo "\nPREPARING\n" && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends
+RUN pip3 install --upgrade pip
 
-RUN echo "\nINSTALLING REQUIREMENTS FROM PIP\n"
 COPY ["requirements.txt", "requirements.txt"]
 RUN pip3 install -r /requirements.txt
 
-RUN echo "\nCOPYING FILES\n"
 RUN mkdir app
-
-# Heroku ignores this, required for local testing
-EXPOSE 8080
-
 ADD . /app
 WORKDIR /app
 
-# Heroku runs as non-root
-RUN chmod a+rxw -R /app
+EXPOSE 8080
 
-RUN adduser --disabled-password myuser
-USER myuser
-
-CMD python3 /app/src/server.py $PORT
+CMD ["python3", "/app/server.py", "8080"]
