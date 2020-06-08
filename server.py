@@ -2,7 +2,7 @@ import argparse
 import logging.handlers
 import sys
 from pathlib import Path
-from typing import Dict, List, Tuple, Any
+from typing import Any, Dict, List, Tuple
 
 import bottle
 import yaml
@@ -122,7 +122,7 @@ def api_generate_json() -> Dict[str, Any]:
 
 @app.route("/locations", method=["GET", "OPTIONS"])
 @allow_cors(["GET", "OPTIONS"])
-def get_languages() -> Dict[str, List[str]]:
+def get_locations() -> Dict[str, List[str]]:
     return {"locations": service.get_locations()}
 
 
@@ -136,6 +136,7 @@ def get_languages() -> Dict[str, List[str]]:
 @allow_cors(["GET", "OPTIONS"])
 def health() -> Dict[str, Any]:
     return {"version": "1.0.0"}
+
 
 def main() -> None:
     log.info("Starting server at 8080")

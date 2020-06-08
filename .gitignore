@@ -11,5 +11,5 @@ virtualenv/
 *.ipynb
 *.pyc
 /*.csv
-/venv/*
+/.venv/*
 examples/

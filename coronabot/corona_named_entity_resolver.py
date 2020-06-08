@@ -1,11 +1,12 @@
 import datetime
 import logging
 import re
-from typing import Tuple, Dict
+from typing import Dict, Tuple
 
 from numpy.random import Generator
 
 from coronabot.resources.time_resource import DATE_EXPRESSIONS, DateFormat
+
 from .core.entity_name_resolver import EntityNameResolver
 from .core.models import Slot
 from .core.registry import Registry

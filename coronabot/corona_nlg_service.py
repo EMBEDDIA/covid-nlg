@@ -25,6 +25,7 @@ from coronabot.resources.latest_recovered_weekly_change_in_country_resource impo
     LatestRecoveredWeeklyChangeInCountryResource,
 )
 from coronabot.resources.time_resource import TimeResource
+
 from .constants import CONJUNCTIONS, get_error_message
 from .core.aggregator import Aggregator
 from .core.document_planner import NoInterestingMessagesException
@@ -33,20 +34,17 @@ from .core.morphological_realizer import MorphologicalRealizer
 from .core.pipeline import NLGPipeline, NLGPipelineComponent
 from .core.realize_slots import SlotRealizer
 from .core.registry import Registry
-from .core.surface_realizer import (
-    BodyHTMLSurfaceRealizer,
-    HeadlineHTMLSurfaceRealizer,
-)
+from .core.surface_realizer import BodyHTMLSurfaceRealizer, HeadlineHTMLSurfaceRealizer
 from .core.template_reader import read_templates
 from .core.template_selector import TemplateSelector
-from .english_uralicNLP_morphological_realizer import EnglishUralicNLPMorphologicalRealizer
-from .finnish_uralicNLP_morphological_realizer import FinnishUralicNLPMorphologicalRealizer
 from .corona_document_planner import CoronaBodyDocumentPlanner, CoronaHeadlineDocumentPlanner
 from .corona_importance_allocator import CoronaImportanceSelector
 from .corona_message_generator import CoronaMessageGenerator, NoMessagesForSelectionException
 from .corona_named_entity_resolver import CoronaEntityNameResolver
-from .resources.processor_resource import ProcessorResource
+from .english_uralicNLP_morphological_realizer import EnglishUralicNLPMorphologicalRealizer
+from .finnish_uralicNLP_morphological_realizer import FinnishUralicNLPMorphologicalRealizer
 from .resources.latest_confirmed_total_in_country_resource import LatestConfirmedTotalInCountryResource
+from .resources.processor_resource import ProcessorResource
 
 log = logging.getLogger("root")
 

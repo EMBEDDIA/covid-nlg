@@ -1,8 +1,8 @@
 import logging
-import requests
 from datetime import date
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
+import requests
 from cachetools import TTLCache, cached
 from numpy.random import Generator
 

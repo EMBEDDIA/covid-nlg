@@ -3,7 +3,7 @@ from enum import Enum
 from typing import List, Type
 
 from ..core.models import Message
-from ..core.realize_slots import SlotRealizerComponent, RegexRealizer
+from ..core.realize_slots import RegexRealizer, SlotRealizerComponent
 from ..corona_message_generator import CountryData
 from .processor_resource import ProcessorResource
 

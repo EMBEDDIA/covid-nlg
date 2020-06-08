@@ -6,7 +6,6 @@ from numpy.random import Generator
 
 from .models import DocumentPlanNode, Literal, Message, Relation, Slot, Template, TemplateComponent
 from .pipeline import NLGPipelineComponent
-
 from .registry import Registry
 
 log = logging.getLogger("root")
