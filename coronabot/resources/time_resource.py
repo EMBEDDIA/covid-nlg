@@ -47,10 +47,12 @@ class DateFormat(Enum):
 
 DATE_EXPRESSIONS = {
     "en": {
-        DateFormat.TODAY: "today",
-        DateFormat.YESTERDAY: "yesterday",
-        DateFormat.DAY_BEFORE_YESTERDAY: "the day before yesterday",
-        DateFormat.LAST_WEEK: "the last week",
-        DateFormat.YESTERDAY_LAST_WEEK: "the day before yesterday last week",
+        "default": {
+            DateFormat.TODAY: "today",
+            DateFormat.YESTERDAY: "yesterday",
+            DateFormat.DAY_BEFORE_YESTERDAY: "the day before yesterday",
+            DateFormat.LAST_WEEK: "the last week",
+            DateFormat.YESTERDAY_LAST_WEEK: "the day before yesterday last week",
+        }
     }
 }

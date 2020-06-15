@@ -38,7 +38,8 @@ class CoronaEntityNameResolver(EntityNameResolver):
         if entity_type == "COUNTRY":
             value = self._resolve_country(entity, COUNTRY_NAMES.get(language.split("-")[0], {}))
         elif entity_type == "DATE":
-            value = self._resolve_date(entity, DATE_EXPRESSIONS.get(language.split("-")[0], {}))
+            date_expr_type = slot.attributes.get("date-expr-type", "default")
+            value = self._resolve_date(entity, DATE_EXPRESSIONS.get(language.split("-")[0], {}).get(date_expr_type, {}))
         else:
             return
         # Was one of the matching things
