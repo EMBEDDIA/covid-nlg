@@ -46,7 +46,7 @@ class LatestRecoveredWeeklyChangeInCountryResource(ProcessorResource):
         messages = [
             Message(
                 Fact(
-                    data.country,
+                    "[ENTITY:COUNTRY:{}]".format(data.country),
                     "country",
                     "{}:{}".format(comparison_point.timestamp, latest.timestamp),
                     "date_span",
@@ -61,7 +61,7 @@ class LatestRecoveredWeeklyChangeInCountryResource(ProcessorResource):
             messages.append(
                 Message(
                     Fact(
-                        data.country,
+                        "[ENTITY:COUNTRY:{}]".format(data.country),
                         "country",
                         "{}:{}".format(comparison_point.timestamp, latest.timestamp),
                         "date_span",

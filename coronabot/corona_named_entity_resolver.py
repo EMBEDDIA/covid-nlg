@@ -6,6 +6,7 @@ from typing import Dict, Tuple
 from numpy.random import Generator
 
 from coronabot.resources.time_resource import DATE_EXPRESSIONS, DateFormat
+from coronabot.resources.country_resource import COUNTRY_NAMES
 
 from .core.entity_name_resolver import EntityNameResolver
 from .core.models import Slot
@@ -35,7 +36,7 @@ class CoronaEntityNameResolver(EntityNameResolver):
         self, registry: Registry, random: Generator, language: str, slot: Slot, entity: str, entity_type: str
     ) -> None:
         if entity_type == "COUNTRY":
-            value = entity.capitalize()
+            value = self._resolve_country(entity, COUNTRY_NAMES.get(language.split("-")[0], {}))
         elif entity_type == "DATE":
             value = self._resolve_date(entity, DATE_EXPRESSIONS.get(language.split("-")[0], {}))
         else:
@@ -58,3 +59,12 @@ class CoronaEntityNameResolver(EntityNameResolver):
         else:
             log.debug("Delta not in expression dict, returning as-is")
             return entity
+
+    def _resolve_country(self, entity: str, country_expressions: Dict[str, str]) -> str:
+        log.debug("Entity {} is a country, resolving".format(entity))
+        if entity not in country_expressions:
+            log.error("Unknown country, returning as-is")
+            return entity
+        resolved_form = country_expressions.get(entity)
+        log.debug("Resolved as {}".format(resolved_form))
+        return resolved_form

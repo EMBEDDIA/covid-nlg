@@ -43,7 +43,7 @@ class LatestDeathsWeeklyChangeInCountryResource(ProcessorResource):
         messages = [
             Message(
                 Fact(
-                    data.country,
+                    "[ENTITY:COUNTRY:{}]".format(data.country),
                     "country",
                     "{}:{}".format(comparison_point.timestamp, latest.timestamp),
                     "date_span",
@@ -58,7 +58,7 @@ class LatestDeathsWeeklyChangeInCountryResource(ProcessorResource):
             messages.append(
                 Message(
                     Fact(
-                        data.country,
+                        "[ENTITY:COUNTRY:{}]".format(data.country),
                         "country",
                         "{}:{}".format(comparison_point.timestamp, latest.timestamp),
                         "date_span",

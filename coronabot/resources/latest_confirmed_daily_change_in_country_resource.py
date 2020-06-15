@@ -43,7 +43,7 @@ class LatestConfirmedDailyChangeInCountryResource(ProcessorResource):
         messages = [
             Message(
                 Fact(
-                    data.country,
+                    "[ENTITY:COUNTRY:{}]".format(data.country),
                     "country",
                     "{}:{}".format(str(comparison_point.timestamp), str(latest.timestamp)),
                     "date_span",
@@ -58,7 +58,7 @@ class LatestConfirmedDailyChangeInCountryResource(ProcessorResource):
             messages.append(
                 Message(
                     Fact(
-                        data.country,
+                        "[ENTITY:COUNTRY:{}]".format(data.country),
                         "country",
                         "{}:{}".format(str(comparison_point.timestamp), str(latest.timestamp)),
                         "date_span",

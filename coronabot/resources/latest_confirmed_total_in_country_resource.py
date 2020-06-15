@@ -27,7 +27,13 @@ class LatestConfirmedTotalInCountryResource(ProcessorResource):
         return [
             Message(
                 Fact(
-                    data.country, "country", latest.timestamp, "date_by", latest.confirmed, "Latest:Confirmed:Total", 1
+                    "[ENTITY:COUNTRY:{}]".format(data.country),
+                    "country",
+                    latest.timestamp,
+                    "date_by",
+                    latest.confirmed,
+                    "Latest:Confirmed:Total",
+                    1,
                 )
             )
         ]

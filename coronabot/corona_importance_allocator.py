@@ -27,10 +27,11 @@ class CoronaImportanceSelector(NLGPipelineComponent):
         return messages
 
     def score_importance_single(self, message: Message, location: str) -> float:
-        if message.main_fact.where_type == "country" and message.main_fact.where != location:
-            log.info(
-                "INCORRECT COUNTRY: {} {}, expected {}".format(
-                    message.main_fact.where_type, message.main_fact.where, location
+        expected_where = "[ENTITY:COUNTRY:{}]".format(location)
+        if message.main_fact.where_type == "country" and message.main_fact.where != expected_where:
+            log.debug(
+                "Scoring message as zero importance, incorrect location {} of type {}, expected {}".format(
+                    message.main_fact.where, message.main_fact.where_type, expected_where
                 )
             )
             return 0

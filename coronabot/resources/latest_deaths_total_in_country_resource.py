@@ -25,7 +25,17 @@ class LatestDeathsTotalInCountryResource(ProcessorResource):
         latest = data.observations[-1]
 
         return [
-            Message(Fact(data.country, "country", latest.timestamp, "date_by", latest.deaths, "Latest:Deaths:Total", 1))
+            Message(
+                Fact(
+                    "[ENTITY:COUNTRY:{}]".format(data.country),
+                    "country",
+                    latest.timestamp,
+                    "date_by",
+                    latest.deaths,
+                    "Latest:Deaths:Total",
+                    1,
+                )
+            )
         ]
 
     def slot_realizer_components(self) -> List[Type[SlotRealizerComponent]]:

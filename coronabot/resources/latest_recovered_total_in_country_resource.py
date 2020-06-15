@@ -27,7 +27,13 @@ class LatestRecoveredTotalInCountryResource(ProcessorResource):
         return [
             Message(
                 Fact(
-                    data.country, "country", latest.timestamp, "date_by", latest.recovered, "Latest:Recovered:Total", 1
+                    "[ENTITY:COUNTRY:{}]".format(data.country),
+                    "country",
+                    latest.timestamp,
+                    "date_by",
+                    latest.recovered,
+                    "Latest:Recovered:Total",
+                    1,
                 )
             )
         ]
