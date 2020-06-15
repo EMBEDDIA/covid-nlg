@@ -12,6 +12,8 @@ log = logging.getLogger("root")
 TEMPLATE = """
 en: [in {where},] there have been {value} confirmed deaths [{time}]
 en-head: {value} total dead in {where} [{time}]
+fi: {where, case=ssa} on kuollut yhteensä {value} henkilöä [{time}]
+fi-head: yhteensä {value} COVID-19 kuolemaa {where, case=ssa} [{time}]
 | value_type = Latest:Deaths:Total
 """
 

@@ -12,16 +12,22 @@ log = logging.getLogger("root")
 TEMPLATE = """
 en: [in {where},] the number of deaths increased by {value} cases [{time}]
 en-head: {value} new deaths in {where} [{time}]
+fi: kuolleiden määrä nousi {value} uhrilla [{where, case=ssa}] [{time}]
+fi-head: {value} uutta koronakuolemaa {where, case=ssa} [{time}]
 | value_type = Latest:Deaths:DailyChange:Abs
 | value > 0
 
 en: [in {where},] the number of deaths increased by {value} percentage [{time}]
 en-head: deaths count increases by {value} % in {where} [{time}]
+fi: kuolleiden määrä nousi {value} prosentilla [{where, case=ssa}] [{time}]
+fi-head: {value} prosentin nousu koronakuolemissa {where, case=ssa} [{time}]
 | value_type = Latest:Deaths:DailyChange:Percentage
 | value > 0
 
 en: [in {where},] the number of deaths stayed the same [{time}]
 en-head: no new deaths in {where} [{time}]
+fi: koronakuolemien määrässä ei oli tapahtunut muutosta [{where, case=ssa}] [{time}]
+fi-head: ei uusia koronakuolemia {where, case=ssa} [{time}]
 | value_type = Latest:Deaths:DailyChange:*
 | value = 0
 """

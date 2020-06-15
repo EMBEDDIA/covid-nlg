@@ -11,17 +11,23 @@ log = logging.getLogger("root")
 
 TEMPLATE = """
 en: [in {where},] the number of confirmed cases increased by {value} cases [{time}]
-en-head: {value} new cases in {where}
+en-head: {value} new COVID-19 cases in {where}
+fi: vahvistettujen tapausten määrä nousi {value} tapauksella [{where, case=ssa}] [{time}]
+fi-head: {value} uutta koronatapausta {where, case=ssa} [{time}]
 | value_type = Latest:Confirmed:DailyChange:Abs
 | value > 0
 
 en: [in {where},] the number of confirmed cases increased by {value} percentage [{time}]
-en-head: case count increases by {value} % in {where} [{time}]
+en-head: COVID-19 case count increases by {value} % in {where} [{time}]
+fi: vahvistettujen tapausten määrä nousi {value} prosenttia [{where, case=ssa}] [{time}]
+fi-head: {value} prosentin nousu vahvistetuissa koronatapauksissa {where, case=ssa} [{time}]
 | value_type = Latest:Confirmed:DailyChange:Percentage
 | value > 0
 
 en: [in {where},] the number of confirmed cases stayed the same [{time}]
-en-head: no new cases [in {where}] [{time}]
+en-head: no new COVID-19 cases [in {where}] [{time}]
+fi: vahvistettujen tapausten määrässä ei tapahtunut muutosta [{where, case=ssa}] [{time}]
+fi-head: ei uusia koronatapauksia {where, case=ssa} [{time}]
 | value_type = Latest:Confirmed:DailyChange:*
 | value = 0
 """

@@ -79,7 +79,7 @@ def allow_cors(opts):
     return decorator
 
 
-LANGUAGES = ["en"]
+LANGUAGES = ["en", "fi"]
 
 #
 # END INIT
