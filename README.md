@@ -1,5 +1,24 @@
 # COVID-19 reporter
 
+## Run with Docker
+
+Build with
+```bash
+docker build -t covidnlg:latest .
+```
+
+Server runs in port 8080. Run docker as
+```bash
+docker run -p 8080:8080 covidnlg:latest
+```
+
+With the server running, browse to `http://localhost:8080/documentation/` to view the Swagger API description.
+
+To get a report of Finnish covid-19 cases in English language, you can run the example in `api_test/` by
+```bash
+./api_test/postReport.sh 8080 Finland en
+```
+
 ## Dependencies
 
 ### FOMA
