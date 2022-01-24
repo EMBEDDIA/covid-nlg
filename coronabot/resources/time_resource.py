@@ -18,12 +18,26 @@ class TimeResource(ProcessorResource):
         return []
 
     def slot_realizer_components(self) -> List[Type[SlotRealizerComponent]]:
-        return [EnglishDateByRealizer, EnglishDateSpanRealizer, FinnishDateByRealizer, FinnishDateSpanRealizer]
+        return [
+            EnglishDateByRealizer,
+            EnglishDateRealizer,
+            EnglishDateSpanRealizer,
+            EnglishDuringYesterdayRealizer,
+            # EnglishDuringLastWeekRealizer,
+            FinnishDateSpanRealizer,
+            FinnishDateRealizer,
+            FinnishDateByRealizer,
+        ]
 
 
 class EnglishDateByRealizer(RegexRealizer):
     def __init__(self, registry):
         super().__init__(registry, "en", r"\[TIME:date_by:([^\]]+)\]", 1, "by [ENTITY:DATE:{}]")
+
+
+class EnglishDateRealizer(RegexRealizer):
+    def __init__(self, registry):
+        super().__init__(registry, "en", r"\[TIME:date:([^\]]+)\]", 1, "[ENTITY:DATE:{}]")
 
 
 class FinnishDateByRealizer(RegexRealizer):
@@ -38,6 +52,18 @@ class FinnishDateByRealizer(RegexRealizer):
         )
 
 
+class FinnishDateRealizer(RegexRealizer):
+    def __init__(self, registry):
+        super().__init__(
+            registry,
+            "fi",
+            r"\[TIME:date:([^\]]+)\]",
+            1,
+            "[ENTITY:DATE:{}]",
+            add_attributes={0: {"date-expr-type": "eilen"}},
+        )
+
+
 class EnglishDateSpanRealizer(RegexRealizer):
     def __init__(self, registry):
         super().__init__(
@@ -46,6 +72,20 @@ class EnglishDateSpanRealizer(RegexRealizer):
             r"\[TIME:date_span:([^\]]+):([^\]]+)\]",
             (1, 2),
             "between [ENTITY:DATE:{}] and [ENTITY:DATE:{}]",
+        )
+
+
+class EnglishDuringYesterdayRealizer(RegexRealizer):
+    def __init__(self, registry):
+        super().__init__(
+            registry, "en", r"between the day before yesterday and yesterday", [], "during yesterday",
+        )
+
+
+class EnglishDuringLastWeekRealizer(RegexRealizer):
+    def __init__(self, registry):
+        super().__init__(
+            registry, "en", r"between the day before yesterday last week and yesterday", [], "in the last week",
         )
 
 
