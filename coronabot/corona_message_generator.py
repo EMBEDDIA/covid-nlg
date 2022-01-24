@@ -13,6 +13,12 @@ from .core.pipeline import NLGPipelineComponent, Registry
 log = logging.getLogger("root")
 
 
+BODY_ONLY_VALUE_TYPES: List[str] = [
+    "DataFrom:Latest",
+    "DataFrom:Previous",
+]
+
+
 class Observation:
     def __init__(self, timestamp: date, confirmed: int, deaths: int, recovered: Optional[int]) -> None:
         self.timestamp = timestamp
@@ -67,6 +73,14 @@ class CoronaMessageGenerator(NLGPipelineComponent):
             for message_parser in message_parsers:
                 try:
                     new_messages = message_parser(country, countries)
+
+                    if "-head" in language:
+                        new_messages = [
+                            message
+                            for message in new_messages
+                            if message.main_fact.value_type not in BODY_ONLY_VALUE_TYPES
+                        ]
+
                     for message in new_messages:
                         log.debug("Parsed message {}".format(message))
                     if new_messages:

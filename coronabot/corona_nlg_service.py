@@ -25,6 +25,7 @@ from coronabot.resources.latest_recovered_weekly_change_in_country_resource impo
     LatestRecoveredWeeklyChangeInCountryResource,
 )
 from coronabot.resources.time_resource import TimeResource
+from coronabot.resources.latest_data_from_resource import LatestDataFromResource
 
 from .constants import CONJUNCTIONS, get_error_message
 from .core.aggregator import Aggregator
@@ -77,6 +78,7 @@ class CoronaNlgService(object):
             LatestConfirmedWeeklyChangeInCountryResource(),
             LatestDeathsWeeklyChangeInCountryResource(),
             LatestRecoveredWeeklyChangeInCountryResource(),
+            LatestDataFromResource(),
         ]
 
         # Templates
