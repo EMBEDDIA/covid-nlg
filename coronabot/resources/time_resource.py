@@ -98,7 +98,7 @@ DATE_EXPRESSIONS = {
             DateFormat.TODAY: "tähän päivään",
             DateFormat.YESTERDAY: "eiliseen",
             DateFormat.DAY_BEFORE_YESTERDAY: "toissapäivään",
-            DateFormat.LAST_WEEK: "viime viikokon",
+            DateFormat.LAST_WEEK: "viime viikkoon",
             DateFormat.YESTERDAY_LAST_WEEK: "viime viikkoon",
         },
     },
